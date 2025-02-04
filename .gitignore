@@ -221,4 +221,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,python,visualstudiocode
 
 Yul/model/*
-web/yulweb/serving_models/*
+Yul/yulweb_work_until_250124_20pm/serving_models/*
+Yul/yulweb_work_until_250124_20pm/serving_models/**/*
