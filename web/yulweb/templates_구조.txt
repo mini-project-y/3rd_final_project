@@ -1,0 +1,31 @@
+template 구조
+base.html : 모든 화면에서 공유하는 틀
+	상속 주는 블록 : 
+		title_tap - 브라우저 탭에 보이는 제목, 
+		block css - 기본 css외의 다른 추가 css, 
+		base_content - 화면의 내용, 
+		js_block - 기본 js외의 다른 추가 js
+
+base_with_layout.html : 인증화면(로그인, 회원가입, 비번찾기)을 제외한 화면의 틀
+	상속 받는 블록 :
+		(base.html에서 상속 받음)
+		title_tap - 브라우저 탭에 보이는 제목, 
+		base_content - 화면의 내용, (sidebar.html과 footer.html는 제외)
+	상속 주는 블록:
+		(page-heading 부분에서)
+		page_title - 브라우저 상단에 보이는 페이지 이름
+		page_desc - 브라우저 상단에 보이는 페이지 이름의 간략 설명
+		(page_content 부분에서)
+		page_content - 브라우저에 보이는 화면의 내용
+* 중요사항 : index.html을 제외한 파일은 headding에 content까지 포함되어 있어서 적절히 잘라 넣는다
+
+base_auth.html : 인증화면의 틀
+	상속 받는 블록 :
+		(base.html에서 상속 받음)
+		title_tap - 브라우저 탭에 보이는 제목, 
+		base_content - 화면의 내용, (여기서 sidebar.html과 footer.html을 가져온다)
+	상속 주는 블록:
+		auth_h1Class_and_pClass - 좌측에 보이는 큰 제목
+		auth_form - 입력 양식
+		auth_msg - 인증 메시지(가입할래? 로그인할래? 비번잊었니? 등)
+		options - 예비용 블록

@@ -1,0 +1,212 @@
+{% extends "base_with_layout.html" %}
+<!-- base.html에서 상속받는 block: 
+     base_with_layourt.html에서 사용하는 block: title_tap, base_content, js_block, 
+     base_with_layourt.html에서 사용 안하는 block:css -->
+<!-- base_with_layout.html에서 상속받는 block: 
+     page-heading : page_title, page_desc / page-content : page_content / js_block2 -->
+
+{% block title_tap %}
+Cuisine Vision
+{% endblock %}
+
+<!-- page-heading -->
+{% block page_title %}
+Cuisine Vision
+{% endblock %}
+{% block page_desc %}
+Discover and classify 150 types of food images with ease. Your personal food AI companion.
+{% endblock %}
+
+<!-- page-content -->
+{% block page_content %}
+<div class="row match-height">
+    <div class="col-md-12 col-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form id="form-predict" class="form form-vertical"
+                          action="/serving/predict/" method="POST">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="img_input" class="form-label">Add Food Image</label>
+                                        <input id="img_input" class="form-control form-control-sm" name="img_input" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-3 col-md-2">
+                                    <label for="img_preview" class="form-control-label">Image Preview</label>
+                                </div>
+                                <div class="col-3 col-md-2">
+                                    <img id="img_preview">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="result">Classification Results</label>
+                                        <textarea id="result" rows="7" readonly class="form-control" style="resize: none;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-2">
+                                        <label for="recipe_output" class="form-control-label">Recipe</label>
+                                    </div>
+                                    <div class="col-12 col-md-10">
+                                        <div id="recipe_output" class="form-control" style="height:auto;" name="recipe_output"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button id="btn-predict" type="button" class="btn btn-primary me-1 mb-1">Predict</button>
+                                    <button id="btn-reset" type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_block2 %}
+<!-- <script>
+    $(function () {
+        // 파일 선택기에 파일이 선택되었을 때 (선택된 파일이 변경되었을 때)
+        $('#img_input').on('change', function (event) {
+            const file = event.target.files[0];
+            if (file) { // 선택된 파일이 있다면
+                const reader = new FileReader();
+                reader.onload = function (e) { // 파일을 다 읽었을 때 실행
+                    $('#img_preview').attr('src', e.target.result);
+                    $('#img_preview').css("display", "block");
+                }
+                reader.readAsDataURL(file); // 파일 읽기 시작
+            } else {
+                $('#img_preview').attr('src', '');
+                $('#img_preview').css("display", "none");
+            }
+        });
+
+        $('#btn-predict').on('click', function (event) {
+            $('#form-predict').submit(); // 동기 방식 요청
+        });
+        $('#form-predict').on('submit', function (event) { // submit 하기 직전에 자동으로 호출
+            event.preventDefault(); // 기본 동작 차단
+            const formData = new FormData(this); // <form> 내부의 입력 데이터를 읽어서 변수에 저장
+            // $.ajax : jQuery의 비동기 요청 함수
+            $.ajax({
+                "url": "/serving/predict/",
+                "type": "POST",
+                "data": formData,
+                "contentType": false,   // 파일 업로드를 위한 설정
+                "processData": false,   // 파일 업로드를 위한 설정
+                "success": function (result, status, xhr) { // 요청에 대한 응답이 오면 호출
+                    // alert(result);                
+                    // $('#result').val(result);
+                    msg = `
+                    [Index : ${result.predicted_class}]
+                    [Food name : ${result.predicted_food_name}]
+                    [English food name : ${result.predicted_food_name_eng}]
+                    [Confidence : ${result.confidence}]`;
+                    $('#result').val(msg);
+                },
+                "error": function (xhr, status, err) { // 요청이 실패하면 호출
+                    alert('fail to execute predicting');
+                }
+            });
+        });
+
+        $('#btn-reset').on('click', function (event) {
+            // $('#form-write').reset(); // 오류 : jQuery 객체집합에는 reset 함수 없음
+            $('#form-write')[0].reset(); // jQuery 객체집합에서 DOM객체를 뽑아서 사용
+        });
+    });
+</script> -->
+<script>
+    $(function() {
+    
+        // 파일 선택기에 파일이 선택되었을 때 (선택된 파일이 변경되었을 때)
+        $('#img_input').on('change', function(event) {
+            const file = event.target.files[0];
+            if (file) { // 선택된 파일이 있다면
+                const reader = new FileReader();
+    
+                reader.onload = function(e) { // 파일을 다 읽었을 때 실행
+                    $('#img_preview').attr('src', e.target.result);
+                    $('#img_preview').css("display", "block");
+                }
+    
+                reader.readAsDataURL(file); // 파일 읽기 시작
+            } else {
+                $('#img_preview').attr('src', '');
+                $('#img_preview').css("display", "none");
+            }
+        });
+    
+        
+        $('#btn-predict').on('click', function(event) {
+            $('#form-predict').submit(); // 동기 방식 요청
+        });
+        $('#form-predict').on('submit', function(event) { // submit 하기 직전에 자동으로 호출
+            event.preventDefault(); // 기본 동작 차단
+    
+            const formData = new FormData(this); // <form> 내부의 입력 데이터를 읽어서 변수에 저장
+    
+            // $.ajax : jQuery의 비동기 요청 함수
+            $.ajax({
+                "url" : "/serving/predict/",
+                "type": "POST",
+                "data": formData,
+                "contentType": false,   // 파일 업로드를 위한 설정
+                "processData": false,   // 파일 업로드를 위한 설정
+                "success": function(result, status, xhr) {
+                    // 예측된 클래스와 신뢰도 출력
+                    const msg = `[번호 : ${result.predicted_class}][신뢰도 : ${result.confidence}]`;
+                    $('#result').val(msg);
+    
+                    // 응답에 포함된 레시피 데이터를 출력
+                    const recipes = result.recipes;
+                    let recipeHtml = '';
+                    if (recipes.length > 0) {
+                        recipes.forEach(recipe => {
+                            
+                            recipeHtml += `
+                                <div>
+                                    <h4>${recipe.name} (${recipe.food_name_eng})</h4>
+                                    <p><strong>재료:</strong> ${recipe.ingredients}</p>
+                                    <p><strong>레시피:</strong></p>
+                                    <ol id="recipe-steps-${recipe.id}"></ol>
+                                </div>
+                                <hr>
+                            `;
+    
+                            // 레시피 단계 추가 (여기에서 recipe.recipe를 사용)
+                            const steps = recipe.recipe.split('|');
+                            steps.forEach((step, index) => {
+                                recipeHtml += `<li>${step.trim()}</li>`;
+                            });
+                        });
+                    } else {
+                        recipeHtml = '<p>해당 클래스에 대한 레시피가 없습니다.</p>';
+                    }
+                    $('#recipe_output').html(recipeHtml);
+                },
+    
+                "error": function(xhr, status, err) { // 요청이 실패하면 호출
+                    alert('fail to execute predicting');
+                }
+            });
+    
+        });
+        
+    
+        $('#btn-reset').on('click', function(event) {
+            // $('#form-write').reset(); // 오류 : jQuery 객체집합에는 reset 함수 없음
+            $('#form-write')[0].reset(); // jQuery 객체집합에서 DOM객체를 뽑아서 사용
+        });
+    });
+    </script>
+    
+{% endblock %}

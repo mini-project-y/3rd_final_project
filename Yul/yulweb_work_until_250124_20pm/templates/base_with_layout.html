@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+<!-- base에서 상속받는 block: 
+     사용 : title_tap, base_content, js_block 
+     미사용 : css -->
+<!-- base_with_layout이 상속해주는 block: 
+     page-heading : page_title, page_desc
+     page-content : page_content
+     js_block2 -->
+
+{% block title_tap %}Dashboard{% endblock %}
+{% block base_content %}
+    <div id="app">
+        <div id="sidebar">
+            {% include "page_modules/sidebar.html" %}
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>{% block page_title %}{% endblock %}</h3>
+                            <p class="text-subtitle text-muted">{% block page_desc %}{% endblock %}</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            {% if session.get('loginuser') %}
+                            <div class="text-end">
+                                <span class="font-bold fs-5">Hello, {{session['loginuser']['memberid'] }}</sapn>
+                                <a href="{{ url_for('auth.logout') }}"><span class="text-muted mb-0 mx-2 fs-6">Logout</span>
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="text-end">
+                                <a href="{{ url_for('auth.login') }}"><span class="text-muted mb-0 fs-6">Login</span></a>
+                                <span class="mx-2">or</span>
+                                <a href="{{ url_for('auth.register') }}"><span class="text-muted mb-0 fs-6">Register</span></a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content"> 
+                {% block page_content %}{% endblock %}
+            </div>
+            {% include "page_modules/footer.html" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_block %} 
+<script src="/static/static/js/components/dark.js"></script>
+<script src="/static/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/static/compiled/js/app.js"></script>
+
+    {% block js_block2 %}{% endblock %}
+
+{% endblock %}
+
+

@@ -1,0 +1,442 @@
+{% extends "base_auth.html" %}
+
+{% block title_tap %}
+Register
+{% endblock %}
+
+{% block auth_h1Class_and_pClass %}
+<h1 class="auth-title">Sign Up</h1>
+<p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+{% endblock %}
+
+{% block auth_form %}
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {% for field, errors in form.errors.items() %}
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<form action="{{ url_for('auth.register') }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row h-100">
+        <!-- 아이디 입력 -->
+        <div class="col-6">
+            <div class="form-group position-relative has-icon-left mb-4">
+                <input type="text" class="form-control form-control-xl" name="memberid"
+                    placeholder="Please enter your username">
+                <div class="form-control-icon"><i class="bi bi-person"></i></div>
+            </div>
+        </div>
+        <!-- 이메일 입력 -->
+        <div class="col-6">
+            <div class="form-group position-relative has-icon-left mb-4">
+                <input type="text" class="form-control form-control-xl" name="email"
+                    placeholder="Please enter your email">
+                <div class="form-control-icon"><i class="bi bi-envelope"></i></div>
+            </div>
+        </div>
+        
+        <!-- 비밀번호 입력 -->
+        <div class="col-6">
+            <div class="form-group position-relative has-icon-left mb-4">
+                <input type="password" class="form-control form-control-xl" name="passwd"
+                    placeholder="Please enter your passowrd">
+                <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
+            </div>
+        </div>
+        <!-- 비밀번호 확인 -->
+        <div class="col-6">
+            <div class="form-group position-relative has-icon-left mb-4">
+                <input type="password" class="form-control form-control-xl" name="passwd_confirm"
+                    placeholder="Please confirm your password">
+                <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
+            </div>
+        </div>
+        
+        <!-- 더 많은 개인정보 수집 -->
+        <div class="row h-100">
+            <!-- 성별 입력 -->
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Select Gender</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 국적 선택 -->
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Select Nationality</h4>
+                    </div>
+                    <div class="card-body">
+                        <fieldset class="form-group">
+                            <select class="form-select" id="basicSelect" name="nationality">
+                                {% for country in countries %}
+                                <option value="{{ country }}">{{ country }}</option>
+                                {% endfor %}
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <!-- 베지테리안 타입 선택 -->
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Select Vegetarian Type</h4>
+                    </div>
+                    <div class="card-body">
+                        <fieldset class="form-group">
+                            <select class="form-select" id="basicSelect" name="vegetarian_type">
+                                <option value="Omnivore">Omnivore</option>
+                                <option value="Pescatarian">Pescatarian</option>
+                                <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
+                                <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
+                                <option value="Lacto-Ovo_Vegetarian">Lacto-Ovo_Vegetarian</option>
+                                <option value="Vegan">Vegan</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row h-100">
+            <!-- 안 먹는 육류 선택 -->
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Select the Meats You Don't Eat</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-inline-block me-2 mb-1">
+                                    <div class="form-check form-check-inline">
+                                        <div class="checkbox">
+                                            <input type="checkbox" class="form-check-input" id="beef" value="beef" name="excluded_meat">
+                                            <label for="beef">Beef</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-inline-block me-2 mb-1">
+                                    <div class="form-check form-check-inline">
+                                        <div class="checkbox">
+                                            <input type="checkbox" class="form-check-input" id="pork" value="pork" name="excluded_meat">
+                                            <label for="pork">Pork</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-inline-block me-2 mb-1">
+                                    <div class="form-check form-check-inline">
+                                        <div class="checkbox">
+                                            <input type="checkbox" class="form-check-input" id="chicken" value="chicken" name="excluded_meat">
+                                            <label for="chicken">Chicken</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-inline-block me-2 mb-1">
+                                    <div class="form-check form-check-inline">
+                                        <div class="checkbox">
+                                            <input type="checkbox" class="form-check-input" id="none" value="none" name="excluded_meat">
+                                            <label for="none">None (eat all)</label>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 알러지 있는 음식 선택 -->
+            <div class="form-group col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <label for="basicInput"><h4 class="card-title">Allergenic foods</h4></label>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="basicInput" placeholder="Enter Foods You Are Allergic To" name="allergic_foods">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row h-100">
+            <!-- 좋아하는 맛 -->
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Favorite Taste</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_sweet" value="sweet" name="favorite_taste">
+                                        <label for="ft_sweet">Sweet</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_sour" value="sour" name="favorite_taste">
+                                        <label for="ft_sour">Sour</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_spicy" value="spicy" name="favorite_taste">
+                                        <label for="ft_spicy">Spicy</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_salty" value="salty" name="favorite_taste">
+                                        <label for="ft_salty">Salty</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_bitter" value="bitter" name="favorite_taste">
+                                        <label for="ft_bitter">Bitter</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ft_greasy" value="greasy" name="favorite_taste">
+                                        <label for="ft_greasy">Greasy</label>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 싫어하는 맛 -->
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Disliked Taste</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_sweet" value="sweet" name="disliked_taste">
+                                        <label for="dt_sweet">Sweet</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_sour" value="sour" name="disliked_taste">
+                                        <label for="dt_sour">Sour</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_spicy" value="spicy" name="disliked_taste">
+                                        <label for="dt_spicy">Spicy</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_salty" value="salty" name="disliked_taste">
+                                        <label for="dt_salty">Salty</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_bitter" value="bitter" name="disliked_taste">
+                                        <label for="dt_bitter">Bitter</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="dt_greasy" value="greasy" name="disliked_taste">
+                                        <label for="dt_greasy">Greasy</label>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 잘 먹는 맛 -->
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Preferred Taste</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_sweet" value="sweet" name="preferred_taste">
+                                        <label for="pt_sweet">Sweet</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_sour" value="sour" name="preferred_taste">
+                                        <label for="pt_sour">Sour</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_spicy" value="spicy" name="preferred_taste">
+                                        <label for="pt_spicy">Spicy</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_salty" value="salty" name="preferred_taste">
+                                        <label for="pt_salty">Salty</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_bitter" value="bitter" name="preferred_taste">
+                                        <label for="pt_bitter">Bitter</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="pt_greasy" value="greasy" name="preferred_taste">
+                                        <label for="pt_greasy">Greasy</label>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 못 먹는 맛 -->
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Unsuitable Taste</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_sweet1" value="sweet" name="non_preferred_taste">
+                                        <label for="nt_sweet1">Sweet</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_sour" value="sour" name="non_preferred_taste">
+                                        <label for="nt_sour">Sour</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_spicy" value="spicy" name="non_preferred_taste">
+                                        <label for="nt_spicy">Spicy</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_salty" value="salty" name="non_preferred_taste">
+                                        <label for="nt_salty">Salty</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_bitter" value="bitter" name="non_preferred_taste">
+                                        <label for="nt_bitter">Bitter</label>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <div class="checkbox">
+                                        <input type="checkbox" class="form-check-input" id="nt_greasy" value="greasy" name="non_preferred_taste">
+                                        <label for="nt_greasy">Greasy</label>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row h-100">
+            <!-- 좋아하는 음식 -->
+            <div class="form-group col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <label for="basicInput"><h4 class="card-title">Favorite Food</h4></label>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="basicInput" placeholder="You Like" name="favorite_food">
+                    </div>
+                </div>
+            </div>
+            <!-- 싫어하는 음식 -->
+            <div class="form-group col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <label for="basicInput"><h4 class="card-title">Disliked Food</h4></label>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="basicInput" placeholder="You Dislike" name="disliked_food">
+                    </div>
+                </div>
+            </div>
+            <!-- 잘 먹는 음식 -->
+            <div class="form-group col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <label for="basicInput"><h4 class="card-title">Preferred Food</h4></label>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="basicInput" placeholder="You Eat Well" name="preferred_food">
+                    </div>
+                </div>
+            </div>
+            <!-- 못 먹는 음식 -->
+            <div class="form-group col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <label for="basicInput"><h4 class="card-title">Unsuitable Food</h4></label>
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="basicInput" placeholder="You Can't Eat Well" name="non_preferred_food">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block auth_msg %}
+<p class='text-gray-600'>Already have an account?
+    <a href="{{ url_for('auth.login') }}" class="font-bold">Log in</a>
+</p>
+
+{% endblock %}
