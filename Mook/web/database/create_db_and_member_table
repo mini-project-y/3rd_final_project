@@ -1,0 +1,55 @@
+-- db 생성
+create database final_project;
+
+-- drop user 3rdProject; -- 필요 없다면 db 삭제
+
+-- 계정 생성 및 권한 주기
+CREATE USER '3rdProject'@'%' IDENTIFIED BY 'passwd1';
+
+GRANT ALL PRIVILEGES ON final_project.* TO '3rdProject'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM '3rdProject'@'%';
+
+SHOW GRANTS FOR '3rdProject'@'%';
+-- USAGE 권한 지정자는 권한 없음, 즉 권한은 없지만 MySQL에 계정이 있음을 알려주는 방식으로 사용
+
+-- database 사용
+use final_project;
+
+-- member table 생성
+drop table member;
+CREATE TABLE member (
+    memberid VARCHAR(30) PRIMARY KEY
+    , passwd VARCHAR(300) NOT NULL
+    , email VARCHAR(300) NOT NULL
+    , gender VARCHAR(50) NOT NULL
+    , nationality VARCHAR(100) NOT NULL
+    , vegetarian_type VARCHAR(50) NOT NULL
+    , excluded_meats VARCHAR(255) DEFAULT 'None'
+    , allergic_foods VARCHAR(255) DEFAULT 'None'    
+    , favorite_taste VARCHAR(70) NOT NULL
+    , disliked_taste VARCHAR(70) NOT NULL
+    , preferred_taste VARCHAR(70) NOT NULL
+    , non_preferred_taste VARCHAR(70) NOT NULL
+    , favorite_food VARCHAR(255) NOT NULL
+    , disliked_food VARCHAR(255) NOT NULL
+    , preferred_food VARCHAR(255) NOT NULL
+    , non_preferred_food VARCHAR(255) NOT NULL
+);
+
+-- member 테이블 조회
+select * from member;
+
+-- food_recipe 테이블 생성
+CREATE TABLE food_recipes (
+    food_no INT PRIMARY KEY,
+    name VARCHAR(100),
+    ingredients TEXT,
+    recipe TEXT,
+    food_name_eng TEXT
+);
+
+-- food_recipe 테이블 조회
+select * from food_recipes;

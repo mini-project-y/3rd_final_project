@@ -1,0 +1,87 @@
+{% extends "base_with_layout.html" %}
+<!-- base.html에서 상속받는 block: 
+     base_with_layourt.html에서 사용하는 block: title_tap, base_content, js_block, 
+     base_with_layourt.html에서 사용 안하는 block:css -->
+<!-- base_with_layout.html에서 상속받는 block: 
+     page-heading : page_title, page_desc / page-content : page_content / js_block2 -->
+
+{% block title_tap %}
+Edit
+{% endblock %}
+
+<!-- page-heading -->
+{% block page_title %}
+Post
+{% endblock %}
+{% block page_desc %}
+Read the full content of the selected post. Feel free to leave a comment or share your thoughts.
+{% endblock %}
+
+<!-- page-content -->
+{% block page_content %}
+<div class="row match-height">
+    <div class="col-md-12 col-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form id="update-form" action="{{ url_for('board.update') }}" method="post" class="form form-vertical">
+                        <input type="hidden" name="boardno" value="{{ board['boardno'] }}">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" value="{{ board['title']}}">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label for="writer">Writer</label>
+                                        <input type="text" id="writer" class="form-control" value="{{ board['writer']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="writer">Views</label>
+                                        <input type="text" id="writer" class="form-control" value="{{ board['readcount']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="writer">Posted on</label>
+                                        <input type="text" id="writer" class="form-control" value="{{ board['writedate']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label for="writer">Last modified</label>
+                                        <input type="text" id="writer" class="form-control" value="{{ board['modifydate']}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                            <label for="attachment" class="form-label">Attachment</label>
+                                            <input id="attachment" class="form-control form-control-sm" name="attachment" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="content">Content</label>
+                                        <textarea id="content" name="content" rows="8" class="form-control" style="resize: none;">{{ board['content']}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn icon icon-left btn-primary" style="margin-right: 5px;"><i class="fa-solid fa-pen-to-square"></i> Update</button>
+                                    <a href="{{ url_for('board.delete', boardno=board['boardno']) }}" class="btn icon icon-left btn-danger" style="margin-right: 5px;"><i class="fa-solid fa-trash"></i> Delete</a>
+                                    <a href="{{ url_for('board.list') }}" class="btn icon icon-left btn-secondary" style="margin-right: 5px;"><i class="fa-solid fa-list"></i> List</a>
+                                    <button type="reset" class="btn icon icon-left btn-danger" style="margin-right: 5px;"><i class="fa-solid fa-ban"></i> Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
