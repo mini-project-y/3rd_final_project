@@ -6,15 +6,11 @@
 {% endblock %}
 
 {% block page_desc %}
-Kakao 지도를 표시하는 예제 페이지입니다.
 {% endblock %}
 
 {% block page_content %}
 <body>
-    <form onsubmit="searchPlaces(); return false;">
-        키워드 : <input type="text" value="" id="keyword" size="15"> 
-        <button type="submit">검색하기</button> 
-    </form>
+
 <!-- 클릭한 좌표 결과 표시 -->
 
 <div id="result" style="margin: 10px 0; font-weight: bold; font-size: 14px; color: #333;"></div>
