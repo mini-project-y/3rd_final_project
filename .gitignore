@@ -227,3 +227,7 @@ Yul/yulweb_work_until_250124_20pm/serving_models/*
 Yul/yulweb_work_until_250124_20pm/serving_models/**/*
 
 Nam/webapps/bellweb/serving_models/*
+
+#
+*.h5
+*.keras
