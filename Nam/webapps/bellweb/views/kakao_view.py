@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, Blueprint
+from flask import Flask, render_template, request, jsonify, Blueprint, redirect, url_for
 import requests
 
 app = Flask(__name__)
@@ -27,6 +27,16 @@ def search_restaurants(lat, lng):
 def home():
     return render_template('kakao/kakao-board4.html')
 
+# 메인 페이지 렌더링
+@kakao_bp.route('/showstore')
+def showstore():
+
+    foodname = request.args.get('foodname')
+    if foodname:
+        return render_template('kakao/kakao-board4.html', foodname=foodname)
+    else:
+        return redirect(url_for("main.index"))
+
 # 키워드 검색 API
 @kakao_bp.route('/search', methods=['GET'])
 def search():
@@ -35,6 +45,14 @@ def search():
         return f"검색어: {query}에 대한 결과를 보여줍니다."
     else:
         return "검색어를 입력해주세요."
+
+# app_bp =Blueprint("kakao",__name__, url_prefix="/kakao/showstore")
+
+# @app.route("/store/<foodname>")
+# def show_store(foodname):
+#     if not foodname:
+#         return "음식 이름이 필요합니다!", 400
+#     return render_template("kako-board4.html", foodname=foodname)
 
 @app.route("/kakao-api", methods=["GET"])
 def kakao_api():

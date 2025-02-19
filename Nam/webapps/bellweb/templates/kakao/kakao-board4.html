@@ -30,6 +30,7 @@ Kakao 지도를 표시하는 예제 페이지입니다.
 
 <script>
 
+const foodName = "{{ foodname }}";
 
 var mapContainer = document.getElementById('map'); // 지도를 표시할 div
 var mapOption = {
@@ -61,8 +62,11 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 var ps = new kakao.maps.services.Places(); 
 
 // 키워드로 장소를 검색합니다
-ps.keywordSearch('이태원 맛집', placesSearchCB); 
-
+if (foodName) {
+    ps.keywordSearch(foodName + ' 맛집', placesSearchCB); 
+} else {
+    // ps.keywordSearch(foodName + ' 맛집', placesSearchCB); 
+}
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
