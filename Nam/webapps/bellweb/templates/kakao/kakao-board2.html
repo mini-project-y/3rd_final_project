@@ -1,0 +1,51 @@
+{% extends "base_with_layout.html" %}
+
+{% block page_title %}
+Kakao 지도
+{% endblock %}
+
+{% block page_desc %}
+Kakao 지도를 표시하는 예제 페이지입니다.
+{% endblock %}
+
+{% block page_content %}
+<div>
+    <button onclick="getUserLocation()">현재 위치 기반 맛집 검색</button>
+    <select id="food-type">
+        <option value="한식">한식</option>
+    </select>
+    <input type="text" id="search-address" placeholder="주소로 검색">
+    <button onclick="searchByAddress()">주소 검색</button>
+</div>
+
+<div id="map" style="width:1500px;height:1000px;"></div>
+
+
+<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{'5c8e0a3d03e1cb150baf2fe5e60a981b'}}&libraries=services,clusterer,drawing"></script>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
+    var map = new kakao.maps.Map(container, options);
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    function searchByAddress() {
+        const address = document.getElementById('search-address').value;
+        geocoder.addressSearch(address, function(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+                map.setCenter(coords);
+            } else {
+                alert('주소 검색에 실패했습니다.');
+            }
+        });
+    }
+</script>
+{% endblock %}

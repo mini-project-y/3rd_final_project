@@ -220,10 +220,10 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,python,visualstudiocode
 
-<<<<<<< HEAD
+
 Mook/model/*
-=======
->>>>>>> 3aae5bf53d49cfdffbd095099869a45b8192e0be
 Yul/model/*
 Yul/yulweb_work_until_250124_20pm/serving_models/*
 Yul/yulweb_work_until_250124_20pm/serving_models/**/*
+
+Nam/webapps/bellweb/serving_models/*
