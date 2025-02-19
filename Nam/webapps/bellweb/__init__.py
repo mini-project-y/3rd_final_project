@@ -16,5 +16,4 @@ def create_app():
     app.register_blueprint(board_view.board_bp)
     app.register_blueprint(serving_view.serving_bp)
     app.register_blueprint(kakao_view.kakao_bp)
-    # app.register_blueprint(kakao_view.kakao_bp)
     return app

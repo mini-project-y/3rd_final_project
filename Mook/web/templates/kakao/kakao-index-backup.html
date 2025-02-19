@@ -1,0 +1,71 @@
+{% extends "base_with_layout.html" %}
+
+{% block title_tap %}한식 맛집 지도{% endblock %}
+
+{% block page_title %}한식 맛집 지도 검색{% endblock %}
+{% block page_desc %}지역, 동, 지번으로 한식 맛집을 검색하세요.{% endblock %}
+
+{% block page_content %}
+    <div>
+        <input type="text" id="query-region" placeholder="지역을 입력하세요">
+        <button onclick="search('query-region')">검색</button>
+    </div>
+    <br>
+    <div>
+        <input type="text" id="query-dong" placeholder="동을 입력하세요">
+        <button onclick="search('query-dong')">검색</button>
+    </div>
+    <br>
+    <div>
+        <input type="text" id="query-address" placeholder="지번을 입력하세요">
+        <button onclick="search('query-address')">검색</button>
+    </div>
+
+    <div id="result"></div>
+{% endblock %}
+
+{% block js_block2 %}
+<script>
+    async function search(inputId) {
+        const query = document.getElementById(inputId).value;
+        if (!query) {
+            alert("검색어를 입력하세요.");
+            return;
+        }
+
+        try {
+            const response = await fetch('/kakao-api', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query }),
+            });
+
+            if (!response.ok) throw new Error("API 요청 실패");
+
+            const data = await response.json();
+            displayResults(data);
+        } catch (error) {
+            document.getElementById('result').innerText = "검색 실패: " + error.message;
+        }
+    }
+
+    function displayResults(data) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = ""; // 기존 결과 삭제
+
+        if (!data || data.length === 0) {
+            resultDiv.innerHTML = "<p>검색 결과가 없습니다.</p>";
+            return;
+        }
+
+        const ul = document.createElement("ul");
+        data.forEach(place => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${place.name}</strong> - ${place.address}`;
+            ul.appendChild(li);
+        });
+
+        resultDiv.appendChild(ul);
+    }
+</script>
+{% endblock %}

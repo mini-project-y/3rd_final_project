@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from .views import main_view, auth_view, board_view, serving_view, chatbot_view
+from .views import main_view, auth_view, board_view, serving_view, chatbot_view, kakao_view
 import os
 from .db_utils.chromadb_helper import ChromadbHelper
 
@@ -22,6 +22,7 @@ def create_app():
     app.register_blueprint(board_view.board_bp)
     app.register_blueprint(serving_view.serving_bp)
     app.register_blueprint(chatbot_view.chatbot_bp)
+    app.register_blueprint(kakao_view.kakao_bp)
     
 
     return app
