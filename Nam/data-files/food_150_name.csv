@@ -1,0 +1,151 @@
+idx,food_name,food_name_eng
+0,가지볶음,Stir-fried Eggplant
+1,간장게장,Soy Sauce Marinated Crab
+2,갈비구이,Grilled Short Ribs
+3,갈비찜,Braised Short Ribs
+4,갈비탕,Short Rib Soup
+5,갈치구이,Grilled Hairtail
+6,갈치조림,Braised Hairtail
+7,감자전,Potato Pancakes
+8,감자조림,Braised Potatoes
+9,감자채볶음,Stir-fried Potato Strips
+10,감자탕,Pork Bone Soup
+11,갓김치,Leaf Mustard Kimchi
+12,건새우볶음,Stir-fried Dried Shrimp
+13,경단,Sweet Rice Balls
+14,계란국,Egg Soup
+15,계란말이,Rolled Omelette
+16,계란찜,Steamed Egg
+17,계란후라이,Fried Egg
+18,고등어구이,Grilled Mackerel
+19,고등어조림,Braised Mackerel
+20,고사리나물,Stir-fried Bracken
+21,고추장진미채볶음,Stir-fried Squid in Chili Sauce
+22,고추튀김,Fried Chili Peppers
+23,곰탕(설렁탕),Beef Bone Soup (Seolleongtang)
+24,곱창구이,Grilled Beef Intestines
+25,곱창전골,Spicy Tripe Hot Pot
+26,과매기,Semi-dried Herring
+27,김밥,Kimbap
+28,김치볶음밥,Kimchi Fried Rice
+29,김치전,Kimchi Pancakes
+30,김치찌개,Kimchi Stew
+31,김치찜,Braised Kimchi
+32,깍두기,Cubed Radish Kimchi
+33,깻잎장아찌,Pickled Perilla Leaves
+34,꼬막찜,Steamed Cockles
+35,꽁치조림,Braised Pacific Saury
+36,꽈리고추무침,Stir-fried Shishito Peppers
+37,꿀떡,Sweet Rice Cake
+38,나박김치,Nabak Kimchi
+39,누룽지,Scorched Rice
+40,닭갈비,Spicy Stir-fried Chicken
+41,닭계장,Spicy Chicken Soup
+42,닭볶음탕,Braised Spicy Chicken
+43,더덕구이,Grilled Deodeok Root
+44,도라지무침,Seasoned Bellflower Root
+45,도토리묵,Acorn Jelly Salad
+46,동그랑땡,Pan-fried Meatballs
+47,동태찌개,Pollock Stew
+48,된장찌개,Soybean Paste Stew
+49,두부김치,Tofu with Kimchi
+50,두부조림,Braised Tofu
+51,땅콩조림,Braised Peanuts
+52,떡갈비,Grilled Short Rib Patties
+53,떡국_만두국,Rice Cake Soup (with Dumplings)
+54,떡꼬치,Skewered Rice Cake
+55,떡볶이,Spicy Rice Cakes
+56,라면,Instant Noodles
+57,라볶이,Stir-fried Spicy Rice Cakes with Noodles
+58,막국수,Buckwheat Noodles
+59,만두,Dumplings
+60,매운탕,Spicy Fish Stew
+61,멍게,Sea Squirts
+62,메추리알장조림,Braised Quail Eggs
+63,멸치볶음,Stir-fried Anchovies
+64,무국,Radish Soup
+65,무생채,Spicy Radish Salad
+66,물냉면,Cold Noodles
+67,물회,Raw Fish Soup
+68,미역국,Seaweed Soup
+69,미역줄기볶음,Stir-fried Seaweed Stems
+70,배추김치,Napa Cabbage Kimchi
+71,백김치,White Kimchi
+72,보쌈,Boiled Pork Wraps
+73,부추김치,Chive Kimchi
+74,북엇국,Dried Pollock Soup
+75,불고기,Bulgogi
+76,비빔냉면,Spicy Cold Noodles
+77,비빔밥,Bibimbap
+78,산낙지,Live Octopus
+79,삼겹살,Grilled Pork Belly
+80,삼계탕,Ginseng Chicken Soup
+81,새우볶음밥,Shrimp Fried Rice
+82,새우튀김,Deep-fried Shrimp
+83,생선전,Pan-fried Fish
+84,소세지볶음,Stir-fried Sausages
+85,송편,Half-moon Rice Cake
+86,수육,Boiled Pork Slices
+87,수정과,Cinnamon Punch
+88,수제비,Korean Dough Soup
+89,숙주나물,Stir-fried Bean Sprouts
+90,순대,Korean Blood Sausage
+91,순두부찌개,Soft Tofu Stew
+92,시금치나물,Seasoned Spinach
+93,시래기국,Dried Radish Greens Soup
+94,식혜,Sweet Rice Drink
+95,알밥,Flying Fish Roe Rice
+96,애호박볶음,Stir-fried Zucchini
+97,약과,Korean Traditional Sweets
+98,약식,Sweet Rice with Nuts and Jujubes
+99,양념게장,Spicy Marinated Crab
+100,양념치킨,Spicy Seasoned Fried Chicken
+101,어묵볶음,Stir-fried Fish Cakes
+102,연근조림,Braised Lotus Roots
+103,열무국수,Young Radish Cold Noodles
+104,열무김치,Young Radish Kimchi
+105,오이소박이,Stuffed Cucumber Kimchi
+106,오징어채볶음,Stir-fried Shredded Squid
+107,오징어튀김,Deep-fried Squid
+108,우엉조림,Braised Burdock Root
+109,유부초밥,Tofu Pouch Sushi
+110,육개장,Spicy Beef Soup
+111,육회,Korean Beef Tartare
+112,잔치국수,Banquet Noodles
+113,잡곡밥,Multigrain Rice
+114,잡채,Stir-fried Glass Noodles with Vegetables
+115,장어구이,Grilled Eel
+116,장조림,Soy-Braised Beef or Pork
+117,전복죽,Abalone Porridge
+118,젓갈,Salted Seafood (Fermented)
+119,제육볶음,Spicy Stir-fried Pork
+120,조개구이,Grilled Clams
+121,조기구이,Grilled Yellow Croaker
+122,족발,Braised Pig's Trotters
+123,주먹밥,Rice Balls
+124,짜장면,Black Bean Sauce Noodles
+125,짬뽕,Spicy Seafood Noodle Soup
+126,쫄면,Spicy Chewy Noodles
+127,쭈꾸미볶음,Stir-fried Baby Octopus
+128,찜닭,Braised Spicy Chicken
+129,총각김치,Young Radish Kimchi
+130,추어탕,Loach Soup
+131,칼국수,Hand-cut Noodle Soup
+132,코다리조림,Braised Semi-dried Pollack
+133,콩국수,Soy Milk Noodles
+134,콩나물국,Soybean Sprout Soup
+135,콩나물무침,Seasoned Soybean Sprouts
+136,콩자반,Soy-braised Black Beans
+137,파김치,Green Onion Kimchi
+138,파전,Green Onion Pancake
+139,편육,Sliced Boiled Pork
+140,피자,Pizza
+141,한과,Traditional Korean Sweets and Cookies
+142,해물찜,Spicy Braised Seafood
+143,호박전,Pumpkin Pancake
+144,호박죽,Pumpkin Porridge
+145,홍어무침,Seasoned Fermented Skate
+146,황태구이,Grilled Dried Pollack
+147,회무침,Spicy Seasoned Raw Fish
+148,후라이드_치킨,Deep Fried Chicken
+149,훈제오리,Smoked Duck

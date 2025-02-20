@@ -15,203 +15,11 @@ Home
 {% block css %}
 <link rel="stylesheet" href="/static/compiled/css/iconly.css">{% endblock %}
 
-{% block page_title %}Profile Statistics{% endblock %}
+{% block page_title %}HOME{% endblock %}
 
 {% block page_content %}
 <section class="row">
-    <div class="col-12 col-lg-9">
-        <div class="row">
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                <div class="stats-icon purple mb-2">
-                                    <i class="iconly-boldShow"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Profile Views</h6>
-                                <h6 class="font-extrabold mb-0">112.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                <div class="stats-icon blue mb-2">
-                                    <i class="iconly-boldProfile"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Followers</h6>
-                                <h6 class="font-extrabold mb-0">183.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                <div class="stats-icon green mb-2">
-                                    <i class="iconly-boldAdd-User"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Following</h6>
-                                <h6 class="font-extrabold mb-0">80.000</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-body px-4 py-4-5">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                <div class="stats-icon red mb-2">
-                                    <i class="iconly-boldBookmark"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                <h6 class="font-extrabold mb-0">112</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Profile Visit</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-profile-visit"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-xl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Profile Visit</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="d-flex align-items-center">
-                                    <svg class="bi text-primary" width="32" height="32" fill="blue" style="width:10px">
-                                        <use xlink:href="/static/static/images/bootstrap-icons.svg#circle-fill" />
-                                    </svg>
-                                    <h5 class="mb-0 ms-3">Europe</h5>
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <h5 class="mb-0 text-end">862</h5>
-                            </div>
-                            <div class="col-12">
-                                <div id="chart-europe"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="d-flex align-items-center">
-                                    <svg class="bi text-success" width="32" height="32" fill="blue" style="width:10px">
-                                        <use xlink:href="/static/static/images/bootstrap-icons.svg#circle-fill" />
-                                    </svg>
-                                    <h5 class="mb-0 ms-3">America</h5>
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <h5 class="mb-0 text-end">375</h5>
-                            </div>
-                            <div class="col-12">
-                                <div id="chart-america"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="d-flex align-items-center">
-                                    <svg class="bi text-danger" width="32" height="32" fill="blue" style="width:10px">
-                                        <use xlink:href="/static/static/images/bootstrap-icons.svg#circle-fill" />
-                                    </svg>
-                                    <h5 class="mb-0 ms-3">Indonesia</h5>
-                                </div>
-                            </div>
-                            <div class="col-5">
-                                <h5 class="mb-0 text-end">1025</h5>
-                            </div>
-                            <div class="col-12">
-                                <div id="chart-indonesia"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest Comments</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-lg">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="col-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-md">
-                                                    <img src="/static/compiled/jpg/5.jpg">
-                                                </div>
-                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                            </div>
-                                        </td>
-                                        <td class="col-auto">
-                                            <p class=" mb-0">Congratulations on your graduation!</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-md">
-                                                    <img src="/static/compiled/jpg/2.jpg">
-                                                </div>
-                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                            </div>
-                                        </td>
-                                        <td class="col-auto">
-                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                tutorial for
-                                                this design?</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-3">
+    <div class="col-12">
         <div class="card">
             <div class="card-body py-4 px-4">
                 <div class="d-flex align-items-center">
@@ -224,7 +32,7 @@ Home
                         <h6 class="text-muted mb-2">@{{session['loginuser']['memberid'] }}</h6>
                             <a href="{{ url_for('auth.logout') }}"><i class="bi bi-toggle-off"></i><span class="text-muted ms-1 mb-0">Logout</span></a>
                         {% else %}
-                        <h5 class="font-bold mb-2">Login Please</h5>
+                        <h5 class="font-bold mb-2">Login</h5>
                         <div class="name ms-0 fs-6">
                             <a href="{{ url_for('auth.register') }}"><i class="bi bi-person-plus"></i><span class="text-muted ms-1 mb-0">Register</span></a><br>
                             <a href="{{ url_for('auth.login') }}"><i class="bi bi-toggle-on"></i><span class="text-muted ms-1 mb-0">Login</span></a>
@@ -234,49 +42,111 @@ Home
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h4>Recent Messages</h4>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-start ">
+                                <div class="stats-icon blue mb-2">
+                                    <i class="iconly-boldProfile"></i>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h6 class="text-muted font-semibold">회원수</h6>
+                                <h6 class="font-extrabold mb-0">{{data_count_list['member']}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-content pb-4">
-                <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                        <img src="/static/compiled/jpg/4.jpg">
-                    </div>
-                    <div class="name ms-4">
-                        <h5 class="mb-1">Hank Schrader</h5>
-                        <h6 class="text-muted mb-0">@johnducky</h6>
-                    </div>
-                </div>
-                <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                        <img src="/static/compiled/jpg/5.jpg">
-                    </div>
-                    <div class="name ms-4">
-                        <h5 class="mb-1">Dean Winchester</h5>
-                        <h6 class="text-muted mb-0">@imdean</h6>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-start ">
+                                <div class="stats-icon green mb-2">
+                                    <i class="iconly-boldAdd-User"></i>
+                                </div>
+                            </div>
+                            <div class="col-">
+                                <h6 class="text-muted font-semibold">질문수</h6>
+                                <h6 class="font-extrabold mb-0">{{data_count_list['board']}}</h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                        <img src="/static/compiled/jpg/1.jpg">
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-start ">
+                                <div class="stats-icon green mb-2">
+                                    <i class="iconly-boldAdd-User"></i>
+                                </div>
+                            </div>
+                            <div class="col-">
+                                <h6 class="text-muted font-semibold">조리법수</h6>
+                                <h6 class="font-extrabold mb-0">{{data_count_list['food_recipes']}}</h6>
+                            </div>
+                        </div>
                     </div>
-                    <div class="name ms-4">
-                        <h5 class="mb-1">John Dodol</h5>
-                        <h6 class="text-muted mb-0">@dodoljohn</h6>
-                    </div>
-                </div>
-                <div class="px-4">
-                    <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start Conversation</button>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h4>Visitors Profile</h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>최근 질문 답변</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- table head dark -->
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-center">No.</th>
+                                        <th class="text-center">Title</th>
+                                        <th class="text-center">Posted by</th>
+                                        <th class="text-center">Views</th>
+                                        <th class="text-center">Posted on</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for board in board_list %}
+                                    <tr>
+                                        <td class="text-center">{{board['boardno']}}</td>
+                                        <td>
+                                            {% if session.get('loginuser') %}
+                                            <a href="{{ url_for('board.detail', boardno=board['boardno']) }}">{{board['title']}}</a>
+                                            {% else %}
+                                            <a href="{{ url_for('board.write') }}">{{board['title']}}</a>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">{{board['writer']}}</td>
+                                        <td class="text-center">{{board['readcount']}}</td>
+                                        <td class="text-center">{{board['writedate']}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div id="chart-visitors-profile"></div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">음식점 </h5>
+                    <p class="card-text">가까운 음식점을 찾아보세요.</p>
+                    <a href="{{ url_for('kakao.home') }}" class="btn btn-primary">지도 보기</a>
+                </div>
             </div>
         </div>
     </div>
@@ -288,4 +158,3 @@ Home
 <script src="/static/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="/static/static/js/pages/dashboard.js"></script>
 {% endblock %}
-
